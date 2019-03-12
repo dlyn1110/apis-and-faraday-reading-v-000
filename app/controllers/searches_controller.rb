@@ -12,9 +12,9 @@ class SearchesController < ApplicationController
     end
     body_hash = JSON.parse(@resp.body)
     if @resp.success?
-      @venues = body_hash["response"]["venues"]
+      @venues = body["response"]["venues"]
     else
-      @error = body_hash["meta"]["errorDetail"]
+      @error = body["meta"]["errorDetail"]
     end
     rescue Faraday::ConnectionFailed
       @error = "There was a timeout. Please try again."
@@ -23,4 +23,3 @@ class SearchesController < ApplicationController
   end
 
 
-end
